@@ -7,9 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BookmarkTest {
 
     @Test
-    public void TestAddUrl() {
+    public void TestAddWithValidUrl() {
         // Act
         boolean result = new Bookmark().saveUrl("https://www.facebook.com/");
+        // Assert
+        assertTrue(result);
+    }
+
+    @Test
+    public void TestAddWithInvalidUrl() {
+        // Act
+        boolean result = new Bookmark().saveUrl("dhdhdebook.com/");
         // Assert
         assertTrue(result);
     }
@@ -48,12 +56,6 @@ public class BookmarkTest {
     public void testIsUrlExistedWithNewUrl() {
         boolean result = new Bookmark().doesUrlExist("https://www.facebook.com/");
         assertFalse(result);
-    }
-
-    @Test
-    public void testIsUrlExistedWithOldUrl() {
-        boolean result = new Bookmark().doesUrlExist("https://www.facebook.com/");
-        assertTrue(result);
     }
 }
 
