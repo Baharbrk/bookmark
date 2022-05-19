@@ -14,12 +14,13 @@ public class Bookmark {
 
     public HashMap<String, List<String>> savedUrls = new HashMap<String, List<String>>();
     List<String> urls = new ArrayList<>();
+    List<String> taggedUrls = new ArrayList<>();
 
     public boolean saveUrl(String url)
     {
         if (validateUrl(url)) {
             this.urls.add(url);
-            this.savedUrls.put("urls", urls);
+            this.savedUrls.put("no_tag", urls);
             return true;
         }
 
@@ -38,12 +39,21 @@ public class Bookmark {
     public boolean tagUrl(String tagName, String url)
     {
         if (validateUrl(url)) {
-            this.urls.add(url);
-            this.savedUrls.put(tagName, urls);
+            if (doesUrlExist(url)) {
+                this.savedUrls.get("no_tag").remove(url);
+            }
+
+            this.taggedUrls.add(url);
+            this.savedUrls.put(tagName, taggedUrls);
 
             return true;
         }
 
         return false;
+    }
+
+    public boolean doesUrlExist(String url)
+    {
+        return urls.contains(url);
     }
 }

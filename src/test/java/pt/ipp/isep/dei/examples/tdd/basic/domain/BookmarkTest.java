@@ -44,11 +44,13 @@ public class BookmarkTest {
         assertFalse(result);
     }
 
+    @Test
     public void testIsUrlExistedWithNewUrl() {
         boolean result = new Bookmark().doesUrlExist("https://www.facebook.com/");
         assertFalse(result);
     }
 
+    @Test
     public void testIsUrlExistedWithOldUrl() {
         boolean result = new Bookmark().doesUrlExist("https://www.facebook.com/");
         assertTrue(result);
