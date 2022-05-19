@@ -21,6 +21,14 @@ public class BookmarkTest {
         // Assert
         assertFalse(result);
     }
+
+    @Test
+    public void TestValidateUrlWithValidUrl() {
+        // Act
+        boolean result = new Bookmark.validateUrl("https://www.google.com/");
+        // Assert
+        assertTrue(result);
+    }
 }
 
 
