@@ -9,7 +9,7 @@ public class BookmarkTest {
     @Test
     public void TestAddUrl() {
         // Act
-        boolean result = new Bookmark.saveUrl("https://www.facebook.com/");
+        boolean result = new Bookmark().saveUrl("https://www.facebook.com/");
         // Assert
         assertTrue(result);
     }
@@ -17,7 +17,7 @@ public class BookmarkTest {
     @Test
     public void TestValidatedUrlWithInvalidUrl() {
         // Act
-        boolean result = new Bookmark.validateUrl("httpsgoogle.com/");
+        boolean result = new Bookmark().validateUrl("httpsgoogle.com/");
         // Assert
         assertFalse(result);
     }
@@ -25,8 +25,15 @@ public class BookmarkTest {
     @Test
     public void TestValidateUrlWithValidUrl() {
         // Act
-        boolean result = new Bookmark.validateUrl("https://www.google.com/");
+        boolean result = new Bookmark().validateUrl("https://www.google.com/");
         // Assert
+        assertTrue(result);
+    }
+
+    @Test
+    public void TestTagWithValidUrl() {
+        // check if url exist, if not add , otherwise save tag
+        boolean result = new Bookmark.tagUrl("tag", "https://www.facebook.com");
         assertTrue(result);
     }
 }
