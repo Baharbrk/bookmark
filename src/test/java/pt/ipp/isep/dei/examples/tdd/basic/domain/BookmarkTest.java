@@ -17,7 +17,7 @@ public class BookmarkTest {
     @Test
     public void TestValidatedUrlWithInvalidUrl() {
         // Act
-        boolean result = new Bookmark().validateUrl("httpsgoogle.com/");
+        boolean result = new Bookmark().validateUrl("httjhgoogle.com/");
         // Assert
         assertFalse(result);
     }
@@ -40,8 +40,18 @@ public class BookmarkTest {
     @Test
     public void TestTagWithInvalidUrl() {
         // check if url exist, if not add , otherwise save tag
-        boolean result = new Bookmark().tagUrl("tag", "ht.facebook.com");
+        boolean result = new Bookmark().tagUrl("tag", "hbbt.facebook.com");
         assertFalse(result);
+    }
+
+    public void testIsUrlExistedWithNewUrl() {
+        boolean result = new Bookmark().doesUrlExist("https://www.facebook.com/");
+        assertFalse(result);
+    }
+
+    public void testIsUrlExistedWithOldUrl() {
+        boolean result = new Bookmark().doesUrlExist("https://www.facebook.com/");
+        assertTrue(result);
     }
 }
 

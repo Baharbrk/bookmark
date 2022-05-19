@@ -28,9 +28,10 @@ public class Bookmark {
 
     public boolean validateUrl(String url)
     {
-        String urlPattern = "\\\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+        String urlPattern = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
         Pattern pattern = Pattern.compile(urlPattern, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(url);
+
         return matcher.matches();
     }
 
