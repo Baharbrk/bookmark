@@ -33,15 +33,15 @@ public class BookmarkTest {
     @Test
     public void TestTagWithValidUrl() {
         // check if url exist, if not add , otherwise save tag
-        boolean result = new Bookmark.tagUrl("tag", "https://www.facebook.com");
+        boolean result = new Bookmark().tagUrl("tag", "https://www.facebook.com");
         assertTrue(result);
     }
 
     @Test
-    public void TestTagWithInvalidValidUrl() {
+    public void TestTagWithInvalidUrl() {
         // check if url exist, if not add , otherwise save tag
-        boolean result = new Bookmark.tagUrl("tag", "ht.facebook.com");
-        assertTrue(result);
+        boolean result = new Bookmark().tagUrl("tag", "ht.facebook.com");
+        assertFalse(result);
     }
 }
 

@@ -13,23 +13,36 @@ import java.util.regex.Pattern;
 public class Bookmark {
 
     public HashMap<String, List<String>> savedUrls = new HashMap<String, List<String>>();
+    List<String> urls = new ArrayList<>();
 
     public boolean saveUrl(String url)
     {
-        List<String> urls = new ArrayList<>();
         if (validateUrl(url)) {
-            urls.add(url);
-            savedUrls.put("urls", urls);
+            this.urls.add(url);
+            this.savedUrls.put("urls", urls);
             return true;
         }
 
         return false;
     }
 
-    public boolean validateUrl(String url) {
-        String urlPattern = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+    public boolean validateUrl(String url)
+    {
+        String urlPattern = "\\\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
         Pattern pattern = Pattern.compile(urlPattern, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(url);
         return matcher.matches();
+    }
+
+    public boolean tagUrl(String tagName, String url)
+    {
+        if (validateUrl(url)) {
+            this.urls.add(url);
+            this.savedUrls.put(tagName, urls);
+
+            return true;
+        }
+
+        return false;
     }
 }
