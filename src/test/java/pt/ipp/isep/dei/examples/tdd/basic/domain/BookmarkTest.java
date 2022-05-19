@@ -19,7 +19,7 @@ public class BookmarkTest {
         // Act
         boolean result = new Bookmark().saveUrl("dhdhdebook.com/");
         // Assert
-        assertTrue(result);
+        assertFalse(result);
     }
 
     @Test
@@ -54,6 +54,8 @@ public class BookmarkTest {
 
     @Test
     public void testIsUrlExistedWithNewUrl() {
+        Bookmark bookmark = new Bookmark();
+        bookmark.saveUrl("https://www.facebook.com/");
         boolean result = new Bookmark().doesUrlExist("https://www.facebook.com/");
         assertFalse(result);
     }
