@@ -13,7 +13,7 @@ public class BookmarkTest {
         // Assert
         assertTrue(result);
     }
-
+// write first what you wanna do , check if I do this I get this
     @Test
     public void TestAddWithInvalidUrl() {
         // Act
@@ -23,31 +23,17 @@ public class BookmarkTest {
     }
 
     @Test
-    public void TestValidatedUrlWithInvalidUrl() {
-        // Act
-        boolean result = new Bookmark().validateUrl("httjhgoogle.com/");
-        // Assert
-        assertFalse(result);
-    }
-
-    @Test
-    public void TestValidateUrlWithValidUrl() {
-        // Act
-        boolean result = new Bookmark().validateUrl("https://www.google.com/");
-        // Assert
-        assertTrue(result);
-    }
-
-    @Test
     public void TestTagWithValidUrl() {
         // check if url exist, if not add , otherwise save tag
         boolean result = new Bookmark().tagUrl("tag", "https://www.facebook.com");
-        assertTrue(result);
+        assertTrue(result); // get list of tags from bookmark , check if the count is as same as expected ,
+        // we don't know if the tag  is really saved => we should check if it is saved
+        // bookmark , tag class, url class
+        // list of bookmarks => list of bookmark class
     }
 
     @Test
     public void TestTagWithInvalidUrl() {
-        // check if url exist, if not add , otherwise save tag
         boolean result = new Bookmark().tagUrl("tag", "hbbt.facebook.com");
         assertFalse(result);
     }
@@ -60,6 +46,4 @@ public class BookmarkTest {
         assertFalse(result);
     }
 }
-
-
 
