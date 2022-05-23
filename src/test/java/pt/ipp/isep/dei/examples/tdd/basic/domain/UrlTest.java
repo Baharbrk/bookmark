@@ -32,6 +32,31 @@ public class UrlTest {
         assertEquals(result, validatedUrl);
     }
 
+    public void testIsUrlSecureWithSecureUrl() {
+        // Arrange
+        Url secureUrl = new Url();
+        secureUrl.setUrl("https://www.google.com/");
+        boolean result = true;
+
+        // Act
+        boolean validatedUrl = secureUrl.isUrlSecure();
+
+        // Assert
+        assertEquals(result, validatedUrl);
+    }
+
+    public void testIsUrlSecureWithInsecureUrl() {
+        // Arrange
+        Url inSecureUrl = new Url();
+        inSecureUrl.setUrl("http://www.google.com/");
+        boolean result = false;
+
+        // Act
+        boolean validatedUrl = inSecureUrl.isUrlSecure();
+
+        // Assert
+        assertEquals(result, validatedUrl);
+    }
 }
 
 
