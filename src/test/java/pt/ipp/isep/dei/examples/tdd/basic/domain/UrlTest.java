@@ -32,6 +32,7 @@ public class UrlTest {
         assertEquals(result, validatedUrl);
     }
 
+    @Test
     public void testIsUrlSecureWithSecureUrl() {
         // Arrange
         Url secureUrl = new Url();
@@ -45,6 +46,7 @@ public class UrlTest {
         assertEquals(result, validatedUrl);
     }
 
+    @Test
     public void testIsUrlSecureWithInsecureUrl() {
         // Arrange
         Url inSecureUrl = new Url();

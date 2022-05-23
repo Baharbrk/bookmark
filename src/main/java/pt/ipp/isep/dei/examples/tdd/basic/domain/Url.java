@@ -25,4 +25,10 @@ public class Url {
 
         return matcher.matches();
     }
+
+    public boolean isUrlSecure() {
+        String search  = "HTTPS";
+
+        return this.url.toLowerCase().contains(search.toLowerCase());
+    }
 }
