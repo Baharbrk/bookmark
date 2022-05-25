@@ -56,6 +56,17 @@ public class UrlTest {
         // Assert
         assertEquals(result, validatedUrl);
     }
+
+    @Test
+    public void testTagUrl() {
+        // Arrange
+        Url url = new Url("https://www.google.com/");
+        Tag tag = new Tag("Google");
+        url.tagUrl(tag);
+
+        // Assert
+        assertTrue(url.tags.contains(tag));
+    }
 }
 
 
