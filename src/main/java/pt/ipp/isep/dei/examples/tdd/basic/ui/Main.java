@@ -21,4 +21,8 @@ public class Main {
             bookmark.addRate();
         }
     }
+
+    public Long countSecureBookmarks() {
+        return this.bookmarks.stream().filter(bookmark -> bookmark.url.isUrlSecure()).count();
+    }
 }
