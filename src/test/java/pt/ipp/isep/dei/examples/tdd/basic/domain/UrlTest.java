@@ -25,10 +25,10 @@ public class UrlTest {
         boolean result = true;
 
         // Act
-        boolean validatedUrl = validUrl.validateUrl();
+        boolean actualResult = validUrl.validateUrl();
 
         // Assert
-        assertEquals(result, validatedUrl);
+        assertEquals(result, actualResult);
     }
 
     @Test
@@ -38,10 +38,10 @@ public class UrlTest {
         boolean result = true;
 
         // Act
-        boolean validatedUrl = secureUrl.isUrlSecure();
+        boolean actualResult = secureUrl.isUrlSecure();
 
         // Assert
-        assertEquals(result, validatedUrl);
+        assertEquals(result, actualResult);
     }
 
     @Test
@@ -51,10 +51,10 @@ public class UrlTest {
         boolean result = false;
 
         // Act
-        boolean validatedUrl = inSecureUrl.isUrlSecure();
+        boolean actualResult = inSecureUrl.isUrlSecure();
 
         // Assert
-        assertEquals(result, validatedUrl);
+        assertEquals(result, actualResult);
     }
 
     @Test
@@ -64,8 +64,11 @@ public class UrlTest {
         Tag tag = new Tag("Google");
         url.tagUrl(tag);
 
+        // Act
+        int size = url.tags.size();
+
         // Assert
-        assertTrue(url.tags.contains(tag));
+        assertEquals(1, size);
     }
 }
 

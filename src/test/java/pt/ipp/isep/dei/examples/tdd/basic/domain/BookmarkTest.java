@@ -1,29 +1,53 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 import org.junit.jupiter.api.*;
-
+import pt.ipp.isep.dei.examples.tdd.basic.ui.Main;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookmarkTest {
-
     @Test
     public void TestAddWithValidUrl() {
         // Arrange
-        Url url = new Url();
-        url.setUrl("https://www.facebook.com/");
+        String url = "https://www.facebook.com/";
+        Url validUrl = new Url(url);
+        String expectedResult = "https://www.facebook.com/";
 
         // Act
-        boolean result = new Bookmark().saveUrl(url.getUrl());
+        Bookmark bookmark = new Bookmark(validUrl);
+        String actualResult = bookmark.url.url;
+
         // Assert
-        assertTrue(result);
+        assertEquals(expectedResult, actualResult);
     }
-// write first what you wanna do , check if I do this I get this
+
+    // object should be removed once url is not valid
     @Test
     public void TestAddWithInvalidUrl() {
+        // Arrange
+        String url = "dhdhdebook.com/";
+        Url invalidUrl = new Url(url);
+        boolean expectedResult = false;
+
         // Act
-        boolean result = new Bookmark().saveUrl("dhdhdebook.com/");
+        boolean actualResult = new Bookmark(invalidUrl).addUrl(invalidUrl);
+
         // Assert
-        assertFalse(result);
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void testAddRate() {
+        // Arrange
+        String url = "https://www.facebook.com/";
+        Url validUrl = new Url(url);
+        int expectedResult = 1;
+
+        // Act
+        Bookmark bookmark = new Bookmark(validUrl);
+        bookmark.addRate();
+        int acutalResult = bookmark.rate;
+
+        // Assert
+        assertEquals(expectedResult, acutalResult);
     }
 }
-

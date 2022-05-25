@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
     }
+
     public void bookmarkUrl(String url) {
         Bookmark bookmark = bookmarks.stream().filter(obj -> obj.url.url == url).findFirst().orElse(null);
         if (bookmark == null) {

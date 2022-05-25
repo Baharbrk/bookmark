@@ -6,13 +6,12 @@ public class Bookmark {
     public Integer rate = 0;
 
     public Bookmark(Url url) {
-        this.addUrl(url);
+        this.addUrl(url); // change this
     }
 
     public boolean addUrl(Url url) {
         if (url.validateUrl()) {
             this.url = url;
-            return true;
         }
 
         return false;

@@ -16,17 +16,6 @@ public class MainTest {
         assertEquals(url, main.bookmarks.get(0).url.url);
     }
 
-    @Test
-    public void TestBookmarkDuplicateUrl() {
-        // Act
-        String url = "https://google.com";
-        Main main = new Main();
-        main.bookmarkUrl(url);
-        main.bookmarkUrl(url);
-
-        // Assert
-        assertEquals(1, main.bookmarks.get(0).rate);
-    }
 
     @Test
     public void TestCountSecureBookmarks() {
