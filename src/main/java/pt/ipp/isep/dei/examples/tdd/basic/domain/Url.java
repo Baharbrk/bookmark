@@ -28,4 +28,8 @@ public class Url {
 
         return this.url.toLowerCase().contains(search.toLowerCase());
     }
+
+    public void tagUrl(Tag tag) {
+        this.tags.add(tag);
+    }
 }
