@@ -1,19 +1,16 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Url {
 
     public String url;
+    public ArrayList<Tag> tags = new ArrayList<Tag>();
 
-    // Getter
-    public String getUrl() {
-        return url;
-    }
-
-    // Setter
-    public void setUrl(String url) {
+    public Url(String url) {
         this.url = url;
     }
 
@@ -27,7 +24,7 @@ public class Url {
     }
 
     public boolean isUrlSecure() {
-        String search  = "HTTPS";
+        String search = "HTTPS";
 
         return this.url.toLowerCase().contains(search.toLowerCase());
     }
