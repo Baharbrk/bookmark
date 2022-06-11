@@ -50,4 +50,18 @@ public class BookmarkTest {
         // Assert
         assertEquals(expectedResult, acutalResult);
     }
+
+    @Test
+    public void testGetHostname() {
+        // Arrange
+        Url url = new Url("https://www.facebook.com");
+        String expectedResult = "facebook.com";
+
+        // Act
+        Bookmark bookmark = new Bookmark(url);
+        String acutalResult = bookmark.getHostName();
+
+        // Assert
+        assertEquals(expectedResult, acutalResult);
+    }
 }
