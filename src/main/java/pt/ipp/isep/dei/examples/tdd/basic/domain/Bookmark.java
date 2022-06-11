@@ -38,7 +38,7 @@ public class Bookmark {
             }
 
         } catch (URISyntaxException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
 
         return hostname;
