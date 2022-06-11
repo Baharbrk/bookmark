@@ -1,5 +1,8 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 public class Bookmark {
 
     public Url url;
@@ -19,5 +22,23 @@ public class Bookmark {
 
     public void addRate() {
         this.rate++;
+    }
+
+    public String getHostName() {
+        URI uri;
+        String hostname = "";
+        try {
+            uri = new URI(this.url.url);
+            hostname = uri.getHost();
+
+            if (hostname != null) {
+                return hostname.startsWith("www.") ? hostname.substring(4) : hostname;
+            }
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        return hostname;
     }
 }
