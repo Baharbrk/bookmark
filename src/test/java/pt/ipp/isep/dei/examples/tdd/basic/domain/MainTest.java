@@ -89,4 +89,32 @@ public class MainTest {
         // Assert
         assertEquals(expectedResult, main.filterBookmarks(filterKeyword).size());
     }
+
+    @Test
+    public void TestFilterBookmarksByMultipleKeywords() {
+        // Arrange
+        Main main = new Main();
+        String[] filterKeywords = {"face","goo","micro"};
+        String mainUrl = "https://www.facebook.com";
+        String[] testUrls = {
+                "https://www.facebook.com/subfolder1",
+                "https://www.facebook.com/subfolder2",
+                "https://www.facebook.com/subfolder3",
+                "https://www.google.com/subfolder1",
+                "https://www.microsoft.com/subfolder2",
+                "https://www.microsoft.com/subfolder2",
+                "https://www.yahoo.com/subfolder2",
+                "https://www.yahoo.com/subfolder2"
+        };
+
+        main.bookmarkUrl(mainUrl);
+        for (String url : testUrls) {
+            main.bookmarkUrl(url);
+        }
+
+        int expectedResult = 6;
+
+        // Assert
+        assertEquals(expectedResult, main.filterBookmarksByMultipleKeywords(filterKeywords).size());
+    }
 }
