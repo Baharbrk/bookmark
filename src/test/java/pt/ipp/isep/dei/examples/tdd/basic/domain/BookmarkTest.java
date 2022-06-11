@@ -45,10 +45,10 @@ public class BookmarkTest {
         // Act
         Bookmark bookmark = new Bookmark(validUrl);
         bookmark.addRate();
-        int acutalResult = bookmark.rate;
+        int actualResult = bookmark.rate;
 
         // Assert
-        assertEquals(expectedResult, acutalResult);
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -64,6 +64,22 @@ public class BookmarkTest {
         // Assert
         assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    public void testGetHostnameWhenHostnameNull() {
+        // Arrange
+        Url url = new Url("https://www.hostwithü.com");
+        String expectedResult = null;
+
+        // Act
+        Bookmark bookmark = new Bookmark(url);
+        String hostname = bookmark.getHostName();
+        String actualResult = hostname;
+
+        // Assert
+        assertEquals(expectedResult, actualResult);
+    }
+
 
     @Test
     public void testAssociatedBookmark() {

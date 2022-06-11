@@ -15,7 +15,7 @@ public class Url {
 
     public boolean validateUrl()
     {
-        String urlPattern = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+        String urlPattern = "^(https?|ftp|file)://[-a-zA-ZäöüÄÖÜß0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
         Pattern pattern = Pattern.compile(urlPattern, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(this.url);
 
