@@ -59,10 +59,10 @@ public class BookmarkTest {
 
         // Act
         Bookmark bookmark = new Bookmark(url);
-        String acutalResult = bookmark.getHostName();
+        String actualResult = bookmark.getHostName();
 
         // Assert
-        assertEquals(expectedResult, acutalResult);
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
