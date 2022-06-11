@@ -4,17 +4,18 @@ import pt.ipp.isep.dei.examples.tdd.basic.domain.Bookmark;
 import pt.ipp.isep.dei.examples.tdd.basic.domain.Url;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Main {
 
-    public ArrayList<Bookmark> bookmarks = new ArrayList<Bookmark>();
+    public ArrayList<Bookmark> bookmarks = new ArrayList<>();
 
     public static void main(String[] args) {
 
     }
 
     public void bookmarkUrl(String url) {
-        Bookmark bookmark = bookmarks.stream().filter(obj -> obj.url.url == url).findFirst().orElse(null);
+        Bookmark bookmark = bookmarks.stream().filter(obj -> Objects.equals(obj.url.url, url)).findFirst().orElse(null);
         if (bookmark == null) {
             Url urlObj = new Url(url);
             this.bookmarks.add(new Bookmark(urlObj));
@@ -25,5 +26,10 @@ public class Main {
 
     public Long countSecureBookmarks() {
         return this.bookmarks.stream().filter(bookmark -> bookmark.url.isUrlSecure()).count();
+    }
+
+    public void refreshAssociates() {
+        this.bookmarks.forEach(thisBookmark -> bookmarks.stream()
+                .filter(bookmark -> !bookmark.url.url.equals(thisBookmark.url.url)).forEach(thisBookmark::associateBookmark));
     }
 }
