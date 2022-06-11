@@ -32,4 +32,14 @@ public class Main {
         this.bookmarks.forEach(thisBookmark -> bookmarks.stream()
                 .filter(bookmark -> !bookmark.url.url.equals(thisBookmark.url.url)).forEach(thisBookmark::associateBookmark));
     }
+
+    public ArrayList<Bookmark> filterBookmarks(String keyword) {
+        ArrayList<Bookmark> filteredBookmarks = new ArrayList<>();
+        bookmarks.forEach(bookmark -> {
+            if (bookmark.url.url.indexOf(keyword, 0) != -1) {
+                filteredBookmarks.add(bookmark);
+            }
+        });
+        return filteredBookmarks;
+    }
 }
