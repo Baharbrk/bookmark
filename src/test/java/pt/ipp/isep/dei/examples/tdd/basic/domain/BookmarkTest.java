@@ -64,4 +64,63 @@ public class BookmarkTest {
         // Assert
         assertEquals(expectedResult, acutalResult);
     }
+
+    @Test
+    public void testAssociatedBookmark() {
+        // Arrange
+        String mainUrl = "https://www.facebook.com";
+        String[] testUrls = {
+                "https://www.facebook.com/subfolder1",
+                "https://www.facebook.com/subfolder2",
+                "https://www.facebook.com/subfolder3",
+                "https://www.google.com/subfolder1",
+                "https://www.google.com/subfolder2"
+        };
+
+        Bookmark mainBookmark = new Bookmark(new Url(mainUrl));
+        for(String url : testUrls) {
+            mainBookmark.associateBookmark(new Bookmark(new Url(url)));
+        }
+
+        int expectedResult = 3;
+
+        // Act
+        int acutalResult = mainBookmark.associatedBookmarks.size();
+
+        // Assert
+        assertEquals(expectedResult, acutalResult);
+    }
+
+    @Test
+    public void testRemoveTag() {
+        // Arrange
+        Url url = new Url("https://www.google.com/");
+        Tag tag = new Tag("Google");
+        Bookmark bookmark = new Bookmark(url);
+
+        url.tagUrl(tag);
+        url.tagUrl(new Tag("Google1"));
+        url.tagUrl(new Tag("Google2"));
+        bookmark.removeTag(tag);
+        int expectedResult = 2;
+
+        // Act
+        int size = bookmark.url.tags.size();
+
+        // Assert
+        assertEquals(expectedResult, size);
+    }
+
+    @Test
+    public void testRemoveUrl() {
+        // Arrange
+        Url url = new Url("https://www.google.com/");
+        Bookmark bookmark = new Bookmark(url);
+
+        // Act
+        bookmark.removeUrl();
+
+        // Assert
+        assertNull(bookmark.url);
+    }
 }
