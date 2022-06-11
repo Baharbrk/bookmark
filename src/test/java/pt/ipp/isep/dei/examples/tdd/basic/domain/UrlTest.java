@@ -70,6 +70,24 @@ public class UrlTest {
         // Assert
         assertEquals(1, size);
     }
+
+    @Test
+    public void testRemoveTagFromUrl() {
+        // Arrange
+        Url url = new Url("https://www.google.com/");
+        Tag tag = new Tag("Google");
+        url.tagUrl(tag);
+        url.tagUrl(new Tag("Google1"));
+        url.tagUrl(new Tag("Google2"));
+        url.removeTag(tag);
+        int expectedResult = 2;
+
+        // Act
+        int size = url.tags.size();
+
+        // Assert
+        assertEquals(expectedResult, size);
+    }
 }
 
 
