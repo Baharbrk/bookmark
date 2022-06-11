@@ -4,6 +4,7 @@ import pt.ipp.isep.dei.examples.tdd.basic.domain.Bookmark;
 import pt.ipp.isep.dei.examples.tdd.basic.domain.Url;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Main {
@@ -36,10 +37,20 @@ public class Main {
     public ArrayList<Bookmark> filterBookmarks(String keyword) {
         ArrayList<Bookmark> filteredBookmarks = new ArrayList<>();
         bookmarks.forEach(bookmark -> {
-            if (bookmark.url.url.indexOf(keyword, 0) != -1) {
+            if (bookmark.url.url.contains(keyword)) {
                 filteredBookmarks.add(bookmark);
             }
         });
+        return filteredBookmarks;
+    }
+
+    public ArrayList<Bookmark> filterBookmarksByMultipleKeywords(String[] keywords) {
+        ArrayList<Bookmark> filteredBookmarks = new ArrayList<>();
+        Arrays.stream(keywords).forEach(keyword -> filterBookmarks(keyword).forEach(bookmark -> {
+            if (filteredBookmarks.stream().noneMatch(thisBookmark -> thisBookmark == bookmark)) {
+                filteredBookmarks.add(bookmark);
+            }
+        }));
         return filteredBookmarks;
     }
 }
