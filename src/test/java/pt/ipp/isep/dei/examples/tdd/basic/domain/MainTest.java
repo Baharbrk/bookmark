@@ -64,4 +64,29 @@ public class MainTest {
         // Assert
         assertEquals(expectedResult, main.bookmarks.get(0).associatedBookmarks.size());
     }
+
+    @Test
+    public void TestFilterBookmarks() {
+        // Arrange
+        Main main = new Main();
+        String filterKeyword = "face";
+        String mainUrl = "https://www.facebook.com";
+        String[] testUrls = {
+                "https://www.facebook.com/subfolder1",
+                "https://www.facebook.com/subfolder2",
+                "https://www.facebook.com/subfolder3",
+                "https://www.google.com/subfolder1",
+                "https://www.google.com/subfolder2"
+        };
+
+        main.bookmarkUrl(mainUrl);
+        for (String url : testUrls) {
+            main.bookmarkUrl(url);
+        }
+
+        int expectedResult = 4;
+
+        // Assert
+        assertEquals(expectedResult, main.filterBookmarks(filterKeyword).size());
+    }
 }
