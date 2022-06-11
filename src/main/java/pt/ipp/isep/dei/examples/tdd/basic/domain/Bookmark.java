@@ -44,13 +44,20 @@ public class Bookmark {
         return hostname;
     }
 
-    public ArrayList<Bookmark> associateBookmark(Bookmark bookmark) {
+    public void associateBookmark(Bookmark bookmark) {
         String thisHostName = this.getHostName();
         String bookmarkHostname = bookmark.getHostName();
         if (thisHostName.equals(bookmarkHostname)) {
             this.associatedBookmarks.add(bookmark);
         }
 
-        return this.associatedBookmarks;
+    }
+
+    public void removeTag(Tag tag) {
+        url.removeTag(tag);
+    }
+
+    public void removeUrl() {
+        url = null;
     }
 }
