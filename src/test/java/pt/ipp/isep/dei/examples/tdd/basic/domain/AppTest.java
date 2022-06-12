@@ -16,6 +16,19 @@ public class AppTest {
         assertEquals(url, app.bookmarks.get(0).url.givenUrl);
     }
 
+    @Test
+    public void TestBookmarkDuplicatedUrl() {
+        // Act
+        String url = "https://google.com";
+        App app = new App();
+        app.bookmarkUrl(url);
+        app.bookmarkUrl(url);
+        app.bookmarkUrl(url);
+
+        // Assert
+        assertEquals(2, app.bookmarks.get(0).rate);
+    }
+
 
     @Test
     public void TestCountSecureBookmarks() {
