@@ -14,7 +14,7 @@ public class BookmarkTest {
 
         // Act
         Bookmark bookmark = new Bookmark(validUrl);
-        String actualResult = bookmark.url.url;
+        String actualResult = bookmark.url.givenUrl;
 
         // Assert
         assertEquals(expectedResult, actualResult);
@@ -87,7 +87,7 @@ public class BookmarkTest {
 
             // Act
             Bookmark bookmark = new Bookmark(url);
-            bookmark.url.url = "  ";
+            bookmark.url.givenUrl = "  ";
             bookmark.getHostName();
         }
         catch (Exception e) {

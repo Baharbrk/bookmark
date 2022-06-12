@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
+import java.util.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ public class Bookmark {
 
     public Url url;
     public Integer rate = 0;
-    public ArrayList<Bookmark> associatedBookmarks = new ArrayList<>();
+    public List<Bookmark> associatedBookmarks = new ArrayList<>();
 
     public Bookmark(Url url) {
         this.addUrl(url); // change this
@@ -30,7 +31,7 @@ public class Bookmark {
         URI uri;
         String hostname = "";
         try {
-            uri = new URI(this.url.url);
+            uri = new URI(this.url.givenUrl);
             hostname = uri.getHost();
 
             if (hostname != null) {
