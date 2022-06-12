@@ -1,4 +1,4 @@
-package pt.ipp.isep.dei.examples.tdd.basic.domain;
+package pt.ipp.isep.dei.examples.tdd.basic.ui;
 
 import org.junit.jupiter.api.*;
 import pt.ipp.isep.dei.examples.tdd.basic.ui.Main;
