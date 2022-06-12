@@ -84,7 +84,7 @@ public class BookmarkTest {
     }
 
     @Test
-    public void testGetHostnameWithException()  {
+    public void testGetHostnameThrowsException()  {
         try {
             // Arrange
             Url url = new Url("https://www.hostwithü.;com");
