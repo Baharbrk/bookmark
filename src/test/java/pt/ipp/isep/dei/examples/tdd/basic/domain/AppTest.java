@@ -1,19 +1,19 @@
-package pt.ipp.isep.dei.examples.tdd.basic.ui;
+package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
-import org.junit.jupiter.api.*;
-import pt.ipp.isep.dei.examples.tdd.basic.ui.Main;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
-public class MainTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class AppTest {
     @Test
     public void TestBookmarkUrl() {
         // Act
         String url = "https://google.com";
-        Main main = new Main();
-        main.bookmarkUrl(url);
+        App app = new App();
+        app.bookmarkUrl(url);
 
         // Assert
-        assertEquals(url, main.bookmarks.get(0).url.url);
+        assertEquals(url, app.bookmarks.get(0).url.url);
     }
 
 
@@ -28,23 +28,23 @@ public class MainTest {
         String secureUrl3 = "https://twitter.com";
         String secureUrl4 = "https://microsoft.com";
 
-        Main main = new Main();
-        main.bookmarkUrl(unsecureUrl1);
-        main.bookmarkUrl(secureUrl1);
-        main.bookmarkUrl(unsecureUrl2);
-        main.bookmarkUrl(secureUrl2);
-        main.bookmarkUrl(unsecureUrl3);
-        main.bookmarkUrl(secureUrl3);
-        main.bookmarkUrl(secureUrl4);
+        App app = new App();
+        app.bookmarkUrl(unsecureUrl1);
+        app.bookmarkUrl(secureUrl1);
+        app.bookmarkUrl(unsecureUrl2);
+        app.bookmarkUrl(secureUrl2);
+        app.bookmarkUrl(unsecureUrl3);
+        app.bookmarkUrl(secureUrl3);
+        app.bookmarkUrl(secureUrl4);
 
         // Assert
-        assertEquals(4, main.countSecureBookmarks());
+        assertEquals(4, app.countSecureBookmarks());
     }
 
     @Test
     public void TestRefreshAssociates() {
         // Arrange
-        Main main = new Main();
+        App app = new App();
         String mainUrl = "https://www.facebook.com";
         String[] testUrls = {
                 "https://www.facebook.com/subfolder1",
@@ -54,21 +54,21 @@ public class MainTest {
                 "https://www.google.com/subfolder2"
         };
 
-        main.bookmarkUrl(mainUrl);
+        app.bookmarkUrl(mainUrl);
         for (String url : testUrls) {
-            main.bookmarkUrl(url);
+            app.bookmarkUrl(url);
         }
-        main.refreshAssociates();
+        app.refreshAssociates();
         int expectedResult = 3;
 
         // Assert
-        assertEquals(expectedResult, main.bookmarks.get(0).associatedBookmarks.size());
+        assertEquals(expectedResult, app.bookmarks.get(0).associatedBookmarks.size());
     }
 
     @Test
     public void TestFilterBookmarks() {
         // Arrange
-        Main main = new Main();
+        App app = new App();
         String filterKeyword = "face";
         String mainUrl = "https://www.facebook.com";
         String[] testUrls = {
@@ -79,21 +79,21 @@ public class MainTest {
                 "https://www.google.com/subfolder2"
         };
 
-        main.bookmarkUrl(mainUrl);
+        app.bookmarkUrl(mainUrl);
         for (String url : testUrls) {
-            main.bookmarkUrl(url);
+            app.bookmarkUrl(url);
         }
 
         int expectedResult = 4;
 
         // Assert
-        assertEquals(expectedResult, main.filterBookmarks(filterKeyword).size());
+        assertEquals(expectedResult, app.filterBookmarks(filterKeyword).size());
     }
 
     @Test
     public void TestFilterBookmarksByMultipleKeywords() {
         // Arrange
-        Main main = new Main();
+        App app = new App();
         String[] filterKeywords = {"face","goo","micro"};
         String mainUrl = "https://www.facebook.com";
         String[] testUrls = {
@@ -107,14 +107,14 @@ public class MainTest {
                 "https://www.yahoo.com/subfolder2"
         };
 
-        main.bookmarkUrl(mainUrl);
+        app.bookmarkUrl(mainUrl);
         for (String url : testUrls) {
-            main.bookmarkUrl(url);
+            app.bookmarkUrl(url);
         }
 
         int expectedResult = 6;
 
         // Assert
-        assertEquals(expectedResult, main.filterBookmarksByMultipleKeywords(filterKeywords).size());
+        assertEquals(expectedResult, app.filterBookmarksByMultipleKeywords(filterKeywords).size());
     }
 }
