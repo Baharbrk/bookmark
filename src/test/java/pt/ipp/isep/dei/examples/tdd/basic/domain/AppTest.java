@@ -13,7 +13,7 @@ public class AppTest {
         app.bookmarkUrl(url);
 
         // Assert
-        assertEquals(url, app.bookmarks.get(0).url.url);
+        assertEquals(url, app.bookmarks.get(0).url.givenUrl);
     }
 
 
